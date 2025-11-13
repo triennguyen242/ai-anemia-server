@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 import numpy as np
 from PIL import Image
 import io, base64
@@ -7,7 +7,7 @@ import io, base64
 app = Flask(__name__)
 
 # Load model .tflite
-interpreter = tf.lite.Interpreter(model_path="mobilenetv5.tflite")
+interpreter = tflite.Interpreter(model_path="mobilenetv5.tflite")
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
@@ -49,3 +49,4 @@ def predict():
     except Exception as e:
         print("🔥 SERVER ERROR:", e)
         return jsonify({"error": "server_error"}), 500
+
