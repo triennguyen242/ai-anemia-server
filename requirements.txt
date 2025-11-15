@@ -1,5 +1,4 @@
 flask
-tflite-runtime==2.12.0
-numpy
+tflite
 pillow
-gunicorn
+numpy
