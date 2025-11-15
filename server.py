@@ -2,12 +2,12 @@ from flask import Flask, request, jsonify
 import numpy as np
 from PIL import Image
 import io, base64
-import tensorflow as tf  # ❗ Dùng TensorFlow CPU thay cho tflite-runtime
+import tflite_runtime.interpreter as tflite
 
 app = Flask(__name__)
 
 # Load model .tflite bằng TensorFlow Lite Interpreter
-interpreter = tf.lite.Interpreter(model_path="mobilenetv5.tflite")
+interpreter = tflite.Interpreter(model_path="mobilenetv5.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
@@ -58,3 +58,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
