@@ -1,4 +1,5 @@
 flask
+gunicorn
 tflite
-pillow
 numpy
+Pillow
