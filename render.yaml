@@ -2,10 +2,9 @@ services:
 - type: web
   name: anemia-ai-server
   env: python
-  
+  # BẮT BUỘC: Cố định phiên bản Python để tương thích với tflite-runtime
   envVars:
     - key: PYTHON_VERSION
       value: 3.11.9 
-
   buildCommand: pip install -r requirements.txt
   startCommand: gunicorn server:app
