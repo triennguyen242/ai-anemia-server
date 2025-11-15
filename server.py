@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import numpy as np
 from PIL import Image
 import io, base64
-from tflite import Interpreter   
+from tflite_runtime.interpreter import Interpreter   
 
 app = Flask(__name__)
 
@@ -63,3 +63,4 @@ def home():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
