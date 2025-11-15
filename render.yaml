@@ -2,5 +2,10 @@ services:
   - type: web
     name: anemia-ai-server
     env: python
+    # Thêm dòng này để cố định phiên bản Python
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+    # ---------------------------------------------
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn server:app
