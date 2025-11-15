@@ -1,5 +1,5 @@
 flask
-tflite-runtime==2.14.0 # Hạ cấp nhẹ cho ổn định hơn
+tflite-runtime==2.12.0
 numpy
 pillow
 gunicorn
