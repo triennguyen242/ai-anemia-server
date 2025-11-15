@@ -2,12 +2,12 @@ from flask import Flask, request, jsonify
 import numpy as np
 from PIL import Image
 import io, base64
-import tflite_runtime.interpreter as tflite
+from tflite import Interpreter   
 
 app = Flask(__name__)
 
-# Load model .tflite bằng TensorFlow Lite Interpreter
-interpreter = tflite.Interpreter(model_path="mobilenetv5.tflite")
+# Load model .tflite
+interpreter = Interpreter(model_path="mobilenetv5.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
@@ -56,6 +56,10 @@ def predict():
         return jsonify({"error": "server_error"}), 500
 
 
+@app.route('/', methods=['GET'])
+def home():
+    return "Server OK!"
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
