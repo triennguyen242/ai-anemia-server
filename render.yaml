@@ -3,4 +3,4 @@ services:
     name: anemia-ai-server
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python server.py
+    startCommand: gunicorn server:app
